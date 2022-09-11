@@ -33,7 +33,7 @@ resource "docker_container" "foobar" {
     volume_name    = "foobar_data"
     container_path = "/data"
   }
-  command = ["--sslcert", "/certs/portainer.crt", "--sslkey", "/certs/portainer.key"]
+  command = ["--foo", "bar"]
 }
 
 resource "docker_volume" "foobar_data" {
