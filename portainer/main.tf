@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "docker" {
-  host = "ssh://root@192.168.1.155"
+  host = var.docker_host
 }
 
 resource "docker_image" "portainer" {
@@ -43,7 +43,7 @@ resource "docker_container" "portainer" {
   }
   mounts {
     type   = "bind"
-    source = "/home/jd/local-certs"
+    source = var.local_certs_path
     target = "/certs"
   }
   command = ["--sslcert", "/certs/portainer.crt", "--sslkey", "/certs/portainer.key"]
