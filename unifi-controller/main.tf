@@ -2,7 +2,7 @@ terraform {
   required_providers {
     docker = {
       source  = "kreuzwerker/docker"
-      version = "~> 2.13.0"
+      version = "2.24.0"
     }
   }
 }
@@ -17,7 +17,7 @@ resource "docker_image" "unifi" {
 }
 
 resource "docker_container" "unifi_container" {
-  image   = docker_image.unifi.latest
+  image   = docker_image.unifi.image_id
   name    = "unifi-controller"
   restart = "unless-stopped"
   env     = ["MEM_LIMIT=1024", "MEM_STARTUP=1024"]
