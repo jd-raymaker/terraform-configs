@@ -2,7 +2,7 @@ terraform {
   required_providers {
     docker = {
       source  = "kreuzwerker/docker"
-      version = "2.24.0"
+      version = "~> 3.0.1"
     }
   }
 }
@@ -12,7 +12,7 @@ provider "docker" {
 }
 
 resource "docker_image" "unifi" {
-  name         = "lscr.io/linuxserver/unifi-controller:latest"
+  name         = "lscr.io/linuxserver/unifi-controller:7.3.83"
   keep_locally = false
 }
 
