@@ -2,7 +2,7 @@ terraform {
   required_providers {
     docker = {
       source  = "kreuzwerker/docker"
-      version = "~> 2.13.0"
+      version = "~> 3.0.1"
     }
   }
 }
@@ -16,9 +16,9 @@ resource "docker_image" "minecraft-server" {
   keep_locally = false
 }
 
-resource "docker_container" "mc" {
+resource "docker_container" "minecraft" {
   image   = docker_image.minecraft-server.latest
-  name    = "mc"
+  name    = "minecraft"
   restart = "unless-stopped"
   tty = true
   stdin_open = true
@@ -28,11 +28,11 @@ resource "docker_container" "mc" {
     external = 25565
   }
   volumes {
-    volume_name    = "mc_data"
+    volume_name    = "minecraft_data"
     container_path = "/data"
   }
 }
 
-resource "docker_volume" "mc_data" {
-  name = "mc_data"
+resource "docker_volume" "minecraft_data" {
+  name = "minecraft_data"
 }
