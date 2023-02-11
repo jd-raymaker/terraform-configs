@@ -17,7 +17,7 @@ resource "docker_image" "minecraft-server" {
 }
 
 resource "docker_container" "minecraft" {
-  image   = docker_image.minecraft-server.latest
+  image   = docker_image.minecraft-server.image_id
   name    = "minecraft"
   restart = "unless-stopped"
   tty = true
