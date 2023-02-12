@@ -31,7 +31,8 @@ resource "docker_container" "minecraft" {
     "CF_SLUG=all-the-mods-8",
     "DIFFICULTY=normal",
     "ENABLE_WHITELIST=true",
-    "PVP=false"
+    "PVP=false",
+    "ALLOW_FLIGHT=TRUE"
   ]
   ports {
     internal = 25565
