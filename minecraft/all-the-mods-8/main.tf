@@ -1,4 +1,10 @@
 terraform {
+  cloud {
+    organization = "jd-raymaker"
+    workspaces {
+      name = "dockingstation-minecraft"
+    }
+  }
   required_providers {
     docker = {
       source  = "kreuzwerker/docker"
@@ -17,12 +23,13 @@ resource "docker_image" "minecraft-server" {
 }
 
 resource "docker_container" "minecraft" {
-  image      = docker_image.minecraft-server.image_id
-  name       = "minecraft"
-  restart    = "unless-stopped"
-  memory     = 10240
-  tty        = true
-  stdin_open = true
+  image       = docker_image.minecraft-server.image_id
+  name        = "minecraft"
+  restart     = "unless-stopped"
+  memory      = 12288
+  memory_swap = 12288
+  tty         = true
+  stdin_open  = true
   env = [
     "EULA=TRUE",
     "LOG_TIMESTAMP=true",
