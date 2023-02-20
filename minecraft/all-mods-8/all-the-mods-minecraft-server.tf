@@ -20,6 +20,7 @@ resource "docker_container" "minecraft" {
   image      = docker_image.minecraft-server.image_id
   name       = "minecraft"
   restart    = "unless-stopped"
+  memory     = 10240
   tty        = true
   stdin_open = true
   env = [
