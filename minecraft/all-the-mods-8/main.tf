@@ -26,8 +26,6 @@ resource "docker_container" "minecraft" {
   image       = docker_image.minecraft-server.image_id
   name        = "minecraft"
   restart     = "unless-stopped"
-  memory      = 12288
-  memory_swap = 12288
   tty         = true
   stdin_open  = true
   env = [
@@ -35,7 +33,7 @@ resource "docker_container" "minecraft" {
     "LOG_TIMESTAMP=true",
     "TYPE=AUTO_CURSEFORGE",
     "VERSION=1.19.2",
-    "MEMORY=8G",
+    "MEMORY=12G",
     "CF_SLUG=all-the-mods-8",
     "DIFFICULTY=normal",
     "ENABLE_WHITELIST=true",
